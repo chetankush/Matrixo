@@ -36,14 +36,14 @@ export const Hero = () => {
         </div>
 
         {/* Main Typography Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center mt-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center mt-12 ml-[-30px] mb-8">
           
           {/* Left Column: Massive Title */}
           <motion.div 
             style={{ y: yLeft, opacity }}
             className="lg:col-span-9"
           >
-            <h1 className="font-heading text-[8vw] lg:text-[9vw] leading-[0.9] font-extrabold text-white tracking-tighter break-words pr-4">
+            <h1 className="font-heading text-[8vw] lg:text-[9vw] leading-[0.9] font-extrabold text-white tracking-tighter break-words pr-8 mr-12">
               <EncryptedText 
                 text="DIGITAL"
                 interval={80}
