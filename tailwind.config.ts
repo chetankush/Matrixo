@@ -11,6 +11,11 @@ const config: Config = {
   darkMode: "class",
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-outfit)", "sans-serif"],
+        heading: ["var(--font-syne)", "sans-serif"],
+        tech: ["var(--font-rajdhani)", "sans-serif"],
+      },
       colors: {
         "matrixo-dark": "#050505",
         "matrixo-green": "#00ff41",

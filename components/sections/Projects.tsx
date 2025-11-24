@@ -37,9 +37,17 @@ export const Projects = () => {
       <div className="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-24">
         
         {/* Header */}
-        <div className="flex items-end justify-between mb-20">
-          <h2 className="font-heading text-3xl md:text-5xl font-bold">SELECTED WORKS</h2>
-          <span className="font-mono text-neutral-500">CASE STUDIES</span>
+        {/* Header */}
+        <div className="flex flex-col md:flex-row items-end justify-between mb-20">
+          <div>
+            <h2 className="font-heading text-[12vw] leading-[0.8] font-bold text-white/10 select-none absolute top-0 left-0 -translate-y-1/2 pointer-events-none">
+              PROJECTS
+            </h2>
+            <h2 className="font-heading text-4xl md:text-6xl font-bold relative z-10">
+              SELECTED WORKS
+            </h2>
+          </div>
+          <span className="font-mono text-neutral-500 mt-4 md:mt-0 relative z-10">CASE STUDIES 2023-24</span>
         </div>
 
         {/* Projects Gallery */}

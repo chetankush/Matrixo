@@ -43,20 +43,20 @@ export const Hero = () => {
             style={{ y: yLeft, opacity }}
             className="lg:col-span-9"
           >
-            <h1 className="font-heading text-[8vw] lg:text-[9vw] leading-[0.9] font-extrabold text-white tracking-tighter break-words pr-8 mr-12">
+            <h1 className="font-heading text-[4vw] lg:text-[8vw] leading-[0.9] font-extrabold text-white break-words pr-8 mr-12">
               <EncryptedText 
-                text="DIGITAL"
+                text="WE BUILD"
                 interval={80}
-                className="block"
-                revealedClassName="text-white"
-                encryptedClassName="text-neutral-600"
+                className="block font-heading font-extrabold"
+                revealedClassName="text-white font-heading font-extrabold"
+                encryptedClassName="text-neutral-500 font-heading font-extrabold"
               />
               <EncryptedText 
-                text="UNIVERSE"
+                text="PRODUCTS"
                 interval={80}
-                className="block text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-200 to-neutral-500"
-                revealedClassName=""
-                encryptedClassName="text-neutral-700"
+                className="block text-transparent text-white mt-4 font-heading font-extrabold"
+                revealedClassName="font-heading font-extrabold"
+                encryptedClassName="text-neutral-700 font-heading font-extrabold"
               />
             </h1>
           </motion.div>
