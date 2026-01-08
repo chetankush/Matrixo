@@ -1,53 +1,66 @@
 "use client";
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { cn } from "@/lib/utils";
+import { useRef } from "react";
+import { motion } from "framer-motion";
 
 const services = [
   {
     id: "01",
-    title: "INTELLIGENT\nECOSYSTEMS",
-    description: "We architect self-evolving digital infrastructures that adapt to user behavior.",
-    tags: ["AI Architecture", "Neural Networks", "Predictive Modeling"]
+    title: "UI/UX",
+    description:
+      "Crafting stunning, user-centric designs that captivate audiences and elevate your brand identity.",
+    tags: ["UI/UX Design", "Responsive Design", "Figma", "Prototyping"],
   },
   {
     id: "02",
-    title: "IMMERSIVE\nINTERFACES",
-    description: "Breaking the fourth wall of the web with WebGL and spatial computing.",
-    tags: ["WebGL", "R3F", "Spatial UI"]
+    title: "FRONTEND\nDEVELOPMENT",
+    description:
+      "Building fast, interactive, and pixel-perfect interfaces with modern frameworks and technologies.",
+    tags: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
   },
+  // {
+  //   id: "03",
+  //   title: "BACKEND\nDEVELOPMENT",
+  //   description:
+  //     "Architecting robust, scalable server-side solutions that power your applications seamlessly.",
+  //   tags: ["Node.js", "PostgreSQL", "REST APIs", "GraphQL"],
+  // },
   {
     id: "03",
-    title: "FULL STACK\nALCHEMY",
-    description: "Transmuting complex backend logic into seamless frontend experiences.",
-    tags: ["Next.js", "Edge Computing", "Scalable Systems"]
+    title: "AI\nINTEGRATIONS",
+    description:
+      "Seamlessly integrating AI capabilities into your applications with chatbots, automation, and intelligent features.",
+    tags: ["ChatGPT", "LLMs", "Automation", "AI Agents"],
   },
   {
     id: "04",
-    title: "DATA\nSYNTHESIS",
-    description: "Turning raw data into actionable visual intelligence.",
-    tags: ["Data Viz", "Real-time Analytics", "Insight Engines"]
-  }
+    title: "FULL STACK\nSOLUTIONS",
+    description:
+      "End-to-end web development from concept to deployment, delivering complete digital experiences.",
+    tags: ["E-commerce", "SaaS", "CMS", "Cloud Deployment"],
+  },
 ];
 
 export const Services = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
 
   return (
-    <section ref={containerRef} id="services" className="relative bg-neutral-950 text-white py-24">
-      <div className="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-24">
-        
+    <section
+      ref={containerRef}
+      id="services"
+      className="relative z-10 bg-neutral-950 text-white py-16 sm:py-20 lg:py-24"
+    >
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-8 md:px-12 lg:px-16">
         {/* Section Header */}
-        <div className="flex items-end justify-between mb-24 border-b border-white/10 pb-8">
-          <h2 className="font-heading text-3xl md:text-5xl font-bold">CAPABILITIES</h2>
-          <span className="font-mono text-neutral-500">(SYSTEMS ONLINE)</span>
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 sm:mb-14 lg:mb-16 border-b border-white/10 pb-6 gap-2">
+          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold">
+            Services
+          </h2>
+          <span className="font-mono text-xs sm:text-sm text-neutral-500">
+            (WHAT WE DO)
+          </span>
         </div>
 
-        {/* Kinetic List */}
+        {/* Services List */}
         <div className="flex flex-col">
           {services.map((service, index) => (
             <ServiceItem key={index} service={service} index={index} />
@@ -58,47 +71,54 @@ export const Services = () => {
   );
 };
 
-const ServiceItem = ({ service, index }: { service: any, index: number }) => {
+const ServiceItem = ({
+  service,
+  index,
+}: {
+  service: (typeof services)[0];
+  index: number;
+}) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.8, delay: index * 0.1 }}
-      className="group relative py-20 border-b border-white/10 hover:border-white/50 transition-colors duration-500"
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      className="group relative py-8 sm:py-10 lg:py-12 border-b border-white/10 hover:border-white/30 transition-colors duration-500 px-2 sm:px-4 lg:px-6 -mx-2 sm:-mx-4 lg:-mx-6 hover:bg-white/[0.02] rounded-lg"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-start">
         {/* ID */}
         <div className="lg:col-span-1">
-          <span className="font-mono text-sm text-matrixo-green">/{service.id}</span>
+          <span className="font-mono text-xs sm:text-sm text-matrixo-green">
+            /{service.id}
+          </span>
         </div>
 
         {/* Title */}
-        <div className="lg:col-span-7">
-          <h3 className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold leading-[0.9] tracking-tighter text-neutral-500 group-hover:text-white transition-colors duration-500 whitespace-pre-line">
+        <div className="lg:col-span-5">
+          <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[0.95] tracking-tight text-neutral-400 group-hover:text-white transition-colors duration-500 whitespace-pre-line">
             {service.title}
           </h3>
         </div>
 
         {/* Description & Tags */}
-        <div className="lg:col-span-4 flex flex-col justify-between h-full pt-4 lg:pt-0">
-          <p className="font-sans text-lg text-neutral-400 max-w-md leading-relaxed group-hover:text-white transition-colors duration-500">
+        <div className="lg:col-span-6 flex flex-col gap-4 sm:gap-6 pt-2 lg:pt-0">
+          <p className="font-sans text-sm sm:text-base text-neutral-400 max-w-lg leading-relaxed group-hover:text-neutral-200 transition-colors duration-500">
             {service.description}
           </p>
-          
-          <div className="flex flex-wrap gap-2 mt-8">
+
+          <div className="flex flex-wrap gap-2">
             {service.tags.map((tag: string, i: number) => (
-              <span key={i} className="px-3 py-1 rounded-full border border-white/10 text-xs font-mono text-neutral-500 group-hover:border-matrixo-purple group-hover:text-matrixo-purple transition-colors duration-500">
+              <span
+                key={i}
+                className="px-3 py-1.5 rounded-full border border-white/10 text-[11px] sm:text-xs font-mono text-neutral-500 group-hover:border-matrixo-green/50 group-hover:text-matrixo-green transition-colors duration-500"
+              >
                 {tag}
               </span>
             ))}
           </div>
         </div>
       </div>
-      
-      {/* Hover Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-matrixo-purple/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
     </motion.div>
   );
 };
