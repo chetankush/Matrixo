@@ -4,7 +4,7 @@ import { Volume2, VolumeX } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export const MusicToggle = () => {
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
   const [isOnHero, setIsOnHero] = useState(true);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -12,7 +12,13 @@ export const MusicToggle = () => {
     // Create audio element
     audioRef.current = new Audio("/space-sound.mp3");
     audioRef.current.loop = true;
-    audioRef.current.volume = 0.05;
+    audioRef.current.volume = 0.01;
+
+    // Attempt autoplay on mount
+    audioRef.current.play().catch(() => {
+      // Autoplay blocked by browser - set to muted state
+      setIsMuted(true);
+    });
 
     return () => {
       if (audioRef.current) {
