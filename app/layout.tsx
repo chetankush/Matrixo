@@ -20,8 +20,11 @@ const rajdhani = Rajdhani({
 });
 
 export const metadata: Metadata = {
-  title: "Matrixo | Digital Ecosystems",
+  title: "FirstVoid | Digital Ecosystems",
   description: "Avant-garde digital agency building intelligent ecosystems.",
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({

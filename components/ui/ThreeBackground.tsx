@@ -1,11 +1,35 @@
 "use client";
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial } from "@react-three/drei";
-import * as random from "maath/random/dist/maath-random.esm";
 import * as THREE from "three";
 
+// Custom sphere point generation to avoid NaN issues
+function generateSpherePoints(count: number, radius: number): Float32Array {
+  const positions = new Float32Array(count * 3);
+  for (let i = 0; i < count; i++) {
+    const r = radius * Math.cbrt(Math.random());
+    const theta = Math.random() * 2 * Math.PI;
+    const phi = Math.acos(2 * Math.random() - 1);
+    
+    positions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+    positions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+    positions[i * 3 + 2] = r * Math.cos(phi);
+  }
+  return positions;
+}
+
 export const ThreeBackground = () => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return <div className="absolute inset-0 z-0 bg-black" />;
+  }
+
   return (
     <div className="absolute inset-0 z-0 bg-black">
       <Canvas camera={{ position: [0, 0, 1] }}>
@@ -20,9 +44,9 @@ export const ThreeBackground = () => {
 function WarpField() {
   const ref = useRef<THREE.Points>(null);
   
-  // Generate points for the warp field
+  // Generate points for the warp field using custom function
   const sphere = useMemo(() => {
-    return random.inSphere(new Float32Array(8000), { radius: 1.5 }) as Float32Array;
+    return generateSpherePoints(2666, 1.5);
   }, []);
 
   const glowTexture = useMemo(() => {
