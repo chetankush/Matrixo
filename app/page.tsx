@@ -4,6 +4,7 @@ import { Hero } from "@/components/sections/Hero";
 import { Services } from "@/components/sections/Services";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { Experiences } from "@/components/sections/Experiences";
+import { MusicToggle } from "@/components/ui/MusicToggle";
 import dynamic from "next/dynamic";
 
 const Projects = dynamic(() => import("@/components/sections/Projects").then((mod) => mod.Projects), {
@@ -19,6 +20,7 @@ export default function Home() {
       <Projects />
       <Experiences />
       <ContactForm />
+      <MusicToggle />
     </main>
   );
 }
