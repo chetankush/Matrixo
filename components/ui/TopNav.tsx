@@ -47,7 +47,7 @@ export const TopNav = () => {
           isScrolled ? "py-3 sm:py-4" : "py-4 sm:py-6 lg:py-8"
         )}
       >
-        <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 md:px-12 lg:px-24 flex items-center justify-between">
+        <div className="w-full max-w-[1920px] mx-auto px-6 sm:px-6 md:px-12 lg:px-24 flex items-center justify-between">
           {/* Logo */}
           <a
             href="#home"

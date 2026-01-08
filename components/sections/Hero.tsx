@@ -50,7 +50,7 @@ export const Hero = () => {
                 encryptedClassName="text-neutral-500 font-heading font-extrabold"
               />
               <EncryptedText
-                text="SOFTWARE"
+                text="SOFTWARES"
                 interval={80}
                 className="block text-white font-heading font-extrabold mt-[-0.05em]"
                 revealedClassName="font-heading font-extrabold"
