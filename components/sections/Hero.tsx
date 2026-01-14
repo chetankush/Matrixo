@@ -29,7 +29,7 @@ export const Hero = () => {
       {/* Content Layer - fixed at bottom */}
       <motion.div
         style={{ opacity }}
-        className="absolute bottom-[20px] left-0 right-0 z-10 w-full max-w-[1920px] mx-auto px-4 sm:px-6 md:px-12 lg:px-24 pointer-events-auto"
+        className="absolute bottom-[100px] sm:bottom-[60px] md:bottom-[20px] left-0 right-0 z-10 w-full max-w-[1920px] mx-auto px-4 sm:px-6 md:px-12 lg:px-24 pointer-events-auto"
       >
         {/* Main Typography Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-end">
