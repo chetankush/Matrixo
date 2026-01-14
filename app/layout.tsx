@@ -20,8 +20,8 @@ const rajdhani = Rajdhani({
 });
 
 export const metadata: Metadata = {
-  title: "FirstVoid | Digital Ecosystems",
-  description: "Avant-garde digital agency building intelligent ecosystems.",
+  title: "FirstVoid | Web Design, Development & AI Integration",
+  description: "Full-stack agency specializing in web design, development, and AI integration. We build websites and apps that grow your business.",
   icons: {
     icon: "/icon.svg",
   },
@@ -34,6 +34,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
+      <head>
+        {/* DNS prefetch for any external resources */}
+        <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+      </head>
       <body
         className={`${outfit.variable} ${syne.variable} ${rajdhani.variable} font-sans antialiased bg-black selection:bg-matrixo-purple selection:text-white`}
       >

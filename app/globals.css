@@ -147,3 +147,10 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Optimize below-the-fold sections for faster initial render
+   This reduces main thread pressure, allowing WebGL to initialize faster */
+.content-visibility-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
+}

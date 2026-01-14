@@ -5,6 +5,7 @@ import { Services } from "@/components/sections/Services";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { Experiences } from "@/components/sections/Experiences";
 import { MusicToggle } from "@/components/ui/MusicToggle";
+import { ThreeBackground } from "@/components/ui/ThreeBackground";
 import dynamic from "next/dynamic";
 
 const Projects = dynamic(() => import("@/components/sections/Projects").then((mod) => mod.Projects), {
@@ -13,14 +14,33 @@ const Projects = dynamic(() => import("@/components/sections/Projects").then((mo
 
 export default function Home() {
   return (
-    <main className="bg-matrixo-dark min-h-screen overflow-x-hidden">
-      <TopNav />
-      <Hero />
-      <Services />
-      <Projects />
-      <Experiences />
-      <ContactForm />
-      <MusicToggle />
-    </main>
+    <>
+      {/* Global Three.js Background - handles its own fixed positioning */}
+      <ThreeBackground />
+
+      {/* Main content - pointer-events-none allows clicking through to Three.js background */}
+      <main className="relative z-10 min-h-screen overflow-x-hidden pointer-events-none" style={{ background: 'transparent' }}>
+        <div className="pointer-events-auto">
+          <TopNav />
+        </div>
+        <Hero />
+        {/* Below-the-fold sections use content-visibility for faster initial render */}
+        <div className="content-visibility-auto pointer-events-auto">
+          <Services />
+        </div>
+        <div className="content-visibility-auto pointer-events-auto">
+          <Projects />
+        </div>
+        <div className="content-visibility-auto pointer-events-auto">
+          <Experiences />
+        </div>
+        <div className="content-visibility-auto pointer-events-auto">
+          <ContactForm />
+        </div>
+        <div className="pointer-events-auto">
+          <MusicToggle />
+        </div>
+      </main>
+    </>
   );
 }

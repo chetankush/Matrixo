@@ -5,37 +5,30 @@ import { motion } from "framer-motion";
 const services = [
   {
     id: "01",
-    title: "UI/UX",
+    title: "WEB\nDESIGN",
     description:
-      "Crafting stunning, user-centric designs that captivate audiences and elevate your brand identity.",
+      "Clean, modern designs that look great on every device. We create websites that keep visitors engaged and turn them into paying customers.",
     tags: ["UI/UX Design", "Responsive Design", "Figma", "Prototyping"],
   },
   {
     id: "02",
-    title: "FRONTEND\nDEVELOPMENT",
+    title: "WEB\nDEVELOPMENT",
     description:
-      "Building fast, interactive, and pixel-perfect interfaces with modern frameworks and technologies.",
+      "Fast, secure websites built with the latest technology. Your site will load instantly and rank higher on Google.",
     tags: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
   },
-  // {
-  //   id: "03",
-  //   title: "BACKEND\nDEVELOPMENT",
-  //   description:
-  //     "Architecting robust, scalable server-side solutions that power your applications seamlessly.",
-  //   tags: ["Node.js", "PostgreSQL", "REST APIs", "GraphQL"],
-  // },
   {
     id: "03",
-    title: "AI\nINTEGRATIONS",
+    title: "AI\nINTEGRATION",
     description:
-      "Seamlessly integrating AI capabilities into your applications with chatbots, automation, and intelligent features.",
+      "Add AI chatbots, automation, and smart features to your business. Save time, reduce costs, and serve customers 24/7.",
     tags: ["ChatGPT", "LLMs", "Automation", "AI Agents"],
   },
   {
     id: "04",
-    title: "FULL STACK\nSOLUTIONS",
+    title: "FULL STACK\nAPPS",
     description:
-      "End-to-end web development from concept to deployment, delivering complete digital experiences.",
+      "Complete web applications from start to finish. E-commerce stores, SaaS platforms, dashboards — we build it all.",
     tags: ["E-commerce", "SaaS", "CMS", "Cloud Deployment"],
   },
 ];

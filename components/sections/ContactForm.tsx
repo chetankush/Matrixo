@@ -100,8 +100,8 @@ export const ContactForm = () => {
               transition={{ duration: 0.5 }}
               className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4"
             >
-              Let&apos;s Build <br />
-              <span className="text-matrixo-green">The Future.</span>
+              Ready to Grow <br />
+              <span className="text-matrixo-green">Your Business?</span>
             </motion.h3>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -110,8 +110,7 @@ export const ContactForm = () => {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-neutral-400 text-sm sm:text-base mb-8 sm:mb-10 max-w-md leading-relaxed"
             >
-              Ready to transform your digital presence? We partner with
-              ambitious brands to create high-impact digital experiences.
+              Tell us about your project and get a free consultation. We help businesses increase revenue with better websites and smart AI tools.
             </motion.p>
 
             <motion.div
