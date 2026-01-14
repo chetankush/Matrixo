@@ -9,6 +9,12 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Optimize Three.js bundle
+  transpilePackages: ["three"],
+  // Enable experimental optimizations for better tree-shaking
+  experimental: {
+    optimizePackageImports: ["three", "@react-three/fiber", "@react-three/drei"],
+  },
 };
 
 export default nextConfig;

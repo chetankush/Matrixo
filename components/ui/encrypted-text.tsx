@@ -13,6 +13,14 @@ interface EncryptedTextProps {
 
 const CHARS = "!@#$%^&*()_+-=[]{}|;:,.<>?/~`0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
+// Generate initial scrambled text
+const getScrambledText = (text: string) => {
+  return text
+    .split("")
+    .map(() => CHARS[Math.floor(Math.random() * CHARS.length)])
+    .join("");
+};
+
 export const EncryptedText = ({
   text,
   interval = 50,
@@ -21,7 +29,8 @@ export const EncryptedText = ({
   encryptedClassName,
   revealedClassName,
 }: EncryptedTextProps) => {
-  const [outputText, setOutputText] = useState("");
+  // Initialize with scrambled text instead of empty string
+  const [outputText, setOutputText] = useState(() => getScrambledText(text));
   const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
