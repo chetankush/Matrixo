@@ -412,7 +412,201 @@ function WarpField() {
         />
       </Points>
       <ColoredField />
+      <TwinklingStars />
     </group>
+  );
+}
+
+// Small colorful twinkling stars scattered across the universe
+function TwinklingStars() {
+  const ref = useRef<THREE.Points>(null);
+  const materialRef = useRef<THREE.ShaderMaterial>(null);
+
+  const { positions, colors, sizes, twinkleOffsets } = useMemo(() => {
+    const count = 150; // Small quantity
+    const positions = new Float32Array(count * 3);
+    const colors = new Float32Array(count * 3);
+    const sizes = new Float32Array(count);
+    const twinkleOffsets = new Float32Array(count);
+
+    // Vibrant universe star colors
+    const starColors = [
+      new THREE.Color("#FF6B6B"), // Red
+      new THREE.Color("#FF8E53"), // Orange
+      new THREE.Color("#FFD93D"), // Yellow/Gold
+      new THREE.Color("#6BCB77"), // Green
+      new THREE.Color("#4D96FF"), // Blue
+      new THREE.Color("#9B59B6"), // Purple
+      new THREE.Color("#FF69B4"), // Pink
+      new THREE.Color("#00D9FF"), // Cyan
+      new THREE.Color("#FF4757"), // Crimson
+      new THREE.Color("#70A1FF"), // Light Blue
+    ];
+
+    for (let i = 0; i < count; i++) {
+      // Spread stars in a larger sphere
+      const r = 1.5 + Math.random() * 2.5;
+      const theta = Math.random() * 2 * Math.PI;
+      const phi = Math.acos(2 * Math.random() - 1);
+
+      positions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+      positions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+      positions[i * 3 + 2] = r * Math.cos(phi);
+
+      // Random vibrant color
+      const color = starColors[Math.floor(Math.random() * starColors.length)];
+      colors[i * 3] = color.r;
+      colors[i * 3 + 1] = color.g;
+      colors[i * 3 + 2] = color.b;
+
+      // Varying sizes - mostly small
+      sizes[i] = 0.008 + Math.random() * 0.015;
+
+      // Random twinkle offset for varied animation
+      twinkleOffsets[i] = Math.random() * Math.PI * 2;
+    }
+
+    return { positions, colors, sizes, twinkleOffsets };
+  }, []);
+
+  const starTexture = useMemo(() => {
+    if (typeof document === 'undefined') return null;
+    const canvas = document.createElement('canvas');
+    canvas.width = 32;
+    canvas.height = 32;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return null;
+
+    const centerX = 16;
+    const centerY = 16;
+
+    // Create a soft glowing star
+    const gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, 16);
+    gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
+    gradient.addColorStop(0.1, 'rgba(255, 255, 255, 0.9)');
+    gradient.addColorStop(0.3, 'rgba(255, 255, 255, 0.4)');
+    gradient.addColorStop(0.6, 'rgba(255, 255, 255, 0.1)');
+    gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, 32, 32);
+
+    // Add cross flare for star effect
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(centerX, 4);
+    ctx.lineTo(centerX, 28);
+    ctx.moveTo(4, centerY);
+    ctx.lineTo(28, centerY);
+    ctx.stroke();
+
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.premultiplyAlpha = true;
+    return texture;
+  }, []);
+
+  const shaderMaterial = useMemo(() => {
+    if (!starTexture) return null;
+
+    return new THREE.ShaderMaterial({
+      uniforms: {
+        uTime: { value: 0 },
+        uTexture: { value: starTexture },
+      },
+      vertexShader: `
+        attribute float aSize;
+        attribute float aTwinkleOffset;
+        varying vec3 vColor;
+        varying float vTwinkle;
+        uniform float uTime;
+
+        void main() {
+          vColor = color;
+
+          // Twinkle effect - varies brightness over time
+          float twinkleSpeed = 2.0 + aTwinkleOffset;
+          vTwinkle = 0.5 + 0.5 * sin(uTime * twinkleSpeed + aTwinkleOffset * 10.0);
+
+          vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+
+          // Size varies with twinkle
+          float dynamicSize = aSize * (0.7 + 0.3 * vTwinkle);
+          gl_PointSize = dynamicSize * (800.0 / -mvPosition.z);
+
+          gl_Position = projectionMatrix * mvPosition;
+        }
+      `,
+      fragmentShader: `
+        uniform sampler2D uTexture;
+        varying vec3 vColor;
+        varying float vTwinkle;
+
+        void main() {
+          vec4 texColor = texture2D(uTexture, gl_PointCoord);
+
+          if (texColor.a < 0.01) discard;
+
+          // Apply color with twinkle brightness
+          vec3 finalColor = vColor * (0.8 + 0.4 * vTwinkle);
+
+          gl_FragColor = vec4(finalColor, texColor.a * (0.7 + 0.3 * vTwinkle));
+        }
+      `,
+      transparent: true,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+      vertexColors: true
+    });
+  }, [starTexture]);
+
+  useFrame((state, delta) => {
+    if (ref.current) {
+      // Slow counter-rotation for depth effect
+      ref.current.rotation.y += delta * 0.02;
+    }
+
+    if (materialRef.current) {
+      materialRef.current.uniforms.uTime.value += delta;
+    }
+  });
+
+  if (!shaderMaterial) return null;
+
+  return (
+    <points ref={ref}>
+      <bufferGeometry>
+        <bufferAttribute
+          attach="attributes-position"
+          count={positions.length / 3}
+          array={positions}
+          itemSize={3}
+          args={[positions, 3]}
+        />
+        <bufferAttribute
+          attach="attributes-color"
+          count={colors.length / 3}
+          array={colors}
+          itemSize={3}
+          args={[colors, 3]}
+        />
+        <bufferAttribute
+          attach="attributes-aSize"
+          count={sizes.length}
+          array={sizes}
+          itemSize={1}
+          args={[sizes, 1]}
+        />
+        <bufferAttribute
+          attach="attributes-aTwinkleOffset"
+          count={twinkleOffsets.length}
+          array={twinkleOffsets}
+          itemSize={1}
+          args={[twinkleOffsets, 1]}
+        />
+      </bufferGeometry>
+      <primitive object={shaderMaterial} ref={materialRef} attach="material" />
+    </points>
   );
 }
 
