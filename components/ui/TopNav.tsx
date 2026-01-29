@@ -41,7 +41,9 @@ export const TopNav = () => {
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-          isScrolled ? "py-3 sm:py-4" : "py-4 sm:py-6 lg:py-6"
+          isScrolled
+            ? "py-3 sm:py-4 bg-black/60 backdrop-blur-xl border-b border-white/10 supports-[backdrop-filter]:bg-black/40 md:bg-transparent md:backdrop-blur-none md:border-b-0"
+            : "py-4 sm:py-6 lg:py-6 bg-transparent"
         )}
       >
         <div className="w-full max-w-[1920px] mx-auto px-6 sm:px-8 md:px-12 lg:px-16 flex items-center justify-between">

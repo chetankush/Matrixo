@@ -15,6 +15,7 @@ import {
   Link as LinkIcon,
 } from "lucide-react";
 import Link from "next/link";
+import { Footer } from "@/components/ui/Footer";
 
 interface Props {
   post: BlogPost;
@@ -401,8 +402,7 @@ export default function BlogPostClient({ post, recentPosts }: Props) {
         </div>
       </section>
 
-      {/* Footer spacing */}
-      <div className="h-20" />
+      <Footer />
     </main>
   );
 }

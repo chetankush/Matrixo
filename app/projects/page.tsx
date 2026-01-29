@@ -6,6 +6,7 @@ import { FloatingNav } from "@/components/ui/FloatingNav";
 import { ParticleBackground } from "@/components/ui/ParticleBackground";
 import { ExternalLink, Github, Layers, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { Footer } from "@/components/ui/Footer";
 
 const categories = [
   "All",
@@ -101,7 +102,7 @@ export default function ProjectsPage() {
 
       {/* Hero Section */}
       <section className="relative pt-24 pb-10 sm:pt-28 sm:pb-12 overflow-hidden">
-        {/* Greenish/purple gradient background */}
+        {/* Gradient background */}
         <div className="absolute inset-0 bg-gradient-to-b from-matrixo-purple/10 via-transparent to-transparent" />
         <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-matrixo-purple/20 rounded-full blur-[120px]" />
         <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-matrixo-green/10 rounded-full blur-[120px]" />
@@ -271,8 +272,7 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      {/* Footer spacing */}
-      <div className="h-20" />
+      <Footer />
     </main>
   );
 }

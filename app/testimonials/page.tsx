@@ -4,6 +4,7 @@ import { TopNav } from "@/components/ui/TopNav";
 import { FloatingNav } from "@/components/ui/FloatingNav";
 import { ParticleBackground } from "@/components/ui/ParticleBackground";
 import Link from "next/link";
+import { Footer } from "@/components/ui/Footer";
 
 const testimonials = [
   {
@@ -122,7 +123,7 @@ export default function TestimonialsPage() {
         </div>
       </section>
 
-      <div className="h-8" />
+      <Footer />
     </main>
   );
 }

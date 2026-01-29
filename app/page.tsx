@@ -6,6 +6,7 @@ import { ContactForm } from "@/components/sections/ContactForm";
 import { Experiences } from "@/components/sections/Experiences";
 import { MusicToggle } from "@/components/ui/MusicToggle";
 import { ThreeBackground } from "@/components/ui/ThreeBackground";
+import { Footer } from "@/components/ui/Footer";
 import dynamic from "next/dynamic";
 
 const Projects = dynamic(() => import("@/components/sections/Projects").then((mod) => mod.Projects), {
@@ -36,6 +37,9 @@ export default function Home() {
         </div>
         <div className="content-visibility-auto pointer-events-auto">
           <ContactForm />
+        </div>
+        <div className="pointer-events-auto">
+          <Footer />
         </div>
         <div className="pointer-events-auto">
           <MusicToggle />

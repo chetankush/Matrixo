@@ -5,6 +5,7 @@ import { FloatingNav } from "@/components/ui/FloatingNav";
 import { ParticleBackground } from "@/components/ui/ParticleBackground";
 import { Users, Target, Rocket, Code, Sparkles, Award } from "lucide-react";
 import Link from "next/link";
+import { Footer } from "@/components/ui/Footer";
 
 const values = [
   {
@@ -37,7 +38,7 @@ export default function AboutPage() {
 
       {/* Hero Section */}
       <section className="relative pt-24 pb-6 sm:pt-28 sm:pb-8 overflow-hidden">
-        {/* Greenish gradient background */}
+        {/* Gradient background */}
         <div className="absolute inset-0 bg-gradient-to-b from-matrixo-purple/10 via-transparent to-transparent" />
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-matrixo-purple/20 rounded-full blur-[120px]" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-matrixo-purple/10 rounded-full blur-[120px]" />
@@ -210,8 +211,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Footer spacing */}
-      <div className="h-20" />
+      <Footer />
     </main>
   );
 }
