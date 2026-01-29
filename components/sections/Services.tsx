@@ -77,7 +77,7 @@ const ServiceItem = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="group relative py-8 sm:py-10 lg:py-12 border-b border-white/10 hover:border-white/30 transition-colors duration-500 px-2 sm:px-4 lg:px-6 -mx-2 sm:-mx-4 lg:-mx-6 hover:bg-white/[0.02] rounded-lg"
+      className="relative py-8 sm:py-10 lg:py-12 border-b border-white/10 px-2 sm:px-4 lg:px-6 -mx-2 sm:-mx-4 lg:-mx-6 rounded-lg"
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-start">
         {/* ID */}
@@ -89,14 +89,14 @@ const ServiceItem = ({
 
         {/* Title */}
         <div className="lg:col-span-5">
-          <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[0.95] tracking-tight text-neutral-400 group-hover:text-white transition-colors duration-500 whitespace-pre-line">
+          <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[0.95] tracking-tight text-white whitespace-pre-line">
             {service.title}
           </h3>
         </div>
 
         {/* Description & Tags */}
         <div className="lg:col-span-6 flex flex-col gap-4 sm:gap-6 pt-2 lg:pt-0">
-          <p className="font-sans text-sm sm:text-base text-neutral-400 max-w-lg leading-relaxed group-hover:text-neutral-200 transition-colors duration-500">
+          <p className="font-sans text-sm sm:text-base text-neutral-400 max-w-lg leading-relaxed">
             {service.description}
           </p>
 
@@ -104,7 +104,7 @@ const ServiceItem = ({
             {service.tags.map((tag: string, i: number) => (
               <span
                 key={i}
-                className="px-3 py-1.5 rounded-full border border-white/10 text-[11px] sm:text-xs font-mono text-neutral-500 group-hover:border-matrixo-green/50 group-hover:text-matrixo-green transition-colors duration-500"
+                className="px-3 py-1.5 rounded-full border border-white/10 text-[11px] sm:text-xs font-mono text-neutral-500"
               >
                 {tag}
               </span>

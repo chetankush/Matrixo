@@ -161,13 +161,30 @@ export const MusicToggle = () => {
     }
   }, [isOnHero, isMuted, isTabVisible, hasInteracted]);
 
-  const toggleMute = useCallback(() => {
+  const toggleMute = useCallback((e: React.MouseEvent) => {
+    // Stop propagation to prevent document click handler from also firing
+    e.stopPropagation();
+
+    // If user hasn't interacted yet (autoplay was blocked), first click should START music
+    if (!hasInteracted) {
+      setHasInteracted(true);
+      userMutedRef.current = false;
+      setIsMuted(false);
+      if (audioRef.current) {
+        audioRef.current.play().catch(() => {
+          // Play failed
+        });
+      }
+      return;
+    }
+
+    // Normal toggle behavior after first interaction
     setIsMuted((prev) => {
       const newMuted = !prev;
       userMutedRef.current = newMuted; // Track user's explicit choice
       return newMuted;
     });
-  }, []);
+  }, [hasInteracted]);
 
   // Only show on hero section
   if (!isOnHero) return null;

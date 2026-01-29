@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 
 export const TopNav = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -25,10 +26,11 @@ export const TopNav = () => {
   }, []);
 
   const navItems = [
-    { name: "Home", link: "#home" },
-    { name: "Services", link: "#services" },
-    { name: "Projects", link: "#projects" },
-    { name: "Experiences", link: "#experiences" },
+    { name: "Home", link: "/" },
+    { name: "About", link: "/about" },
+    { name: "Projects", link: "/projects" },
+    { name: "Testimonials", link: "/testimonials" },
+    { name: "Blog", link: "/blog" },
   ];
 
   return (
@@ -44,15 +46,15 @@ export const TopNav = () => {
       >
         <div className="w-full max-w-[1920px] mx-auto px-6 sm:px-8 md:px-12 lg:px-16 flex items-center justify-between">
           {/* Logo - Left */}
-          <a
-            href="#home"
+          <Link
+            href="/"
             className={cn(
               "hidden md:block font-heading font-bold text-2xl lg:text-3xl tracking-[0.5px] py-1 transition-colors duration-300 drop-shadow-[0_2px_10px_rgba(255,255,255,0.3)]",
               isOnLightBg ? "text-black" : "text-white"
             )}
           >
             FirstVoid
-          </a>
+          </Link>
 
           {/* Center Navigation */}
           <div
@@ -66,7 +68,7 @@ export const TopNav = () => {
             )}
           >
             {navItems.map((item, idx) => (
-              <a
+              <Link
                 key={idx}
                 href={item.link}
                 className={cn(
@@ -77,13 +79,13 @@ export const TopNav = () => {
                 )}
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
           </div>
 
           {/* LET'S TALK - Right */}
-          <a
-            href="#contact"
+          <Link
+            href="/#contact"
             className={cn(
               "hidden md:block px-8 lg:px-10 py-2.5 rounded-full font-sans font-bold text-xs lg:text-sm transition-all duration-300",
               isOnLightBg
@@ -92,19 +94,19 @@ export const TopNav = () => {
             )}
           >
             LET&apos;S TALK
-          </a>
+          </Link>
 
           {/* Mobile Header */}
           <div className="md:hidden flex items-center justify-between w-full">
-            <a
-              href="#home"
+            <Link
+              href="/"
               className={cn(
                 "font-heading font-bold text-lg tracking-tighter transition-colors duration-300",
                 isOnLightBg ? "text-black" : "text-white"
               )}
             >
               FirstVoid
-            </a>
+            </Link>
             <button
               className={cn(
                 "p-2 transition-colors duration-300",
@@ -134,22 +136,22 @@ export const TopNav = () => {
           >
             <div className="flex flex-col gap-6 sm:gap-8">
               {navItems.map((item, idx) => (
-                <a
+                <Link
                   key={idx}
                   href={item.link}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="font-heading text-3xl sm:text-4xl text-white hover:text-matrixo-green transition-colors"
                 >
                   {item.name}
-                </a>
+                </Link>
               ))}
-              <a
-                href="#contact"
+              <Link
+                href="/#contact"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="mt-4 px-6 py-3 bg-white text-black rounded-full font-sans font-bold text-base hover:bg-matrixo-green duration-300 w-fit"
               >
                 Contact Us
-              </a>
+              </Link>
             </div>
           </motion.div>
         )}
