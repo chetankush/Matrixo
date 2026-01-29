@@ -34,7 +34,7 @@ export const ParticleBackground = () => {
     }
 
     const particles: Particle[] = [];
-    const numParticles = 35;
+    const numParticles = 15;
 
     for (let i = 0; i < numParticles; i++) {
       particles.push({
