@@ -95,7 +95,7 @@ export default function ProjectsPage() {
       : projects.filter((project) => project.category === activeCategory);
 
   return (
-    <main className="min-h-screen bg-neutral-950">
+    <main className="min-h-screen bg-neutral-950 overflow-x-hidden">
       <TopNav />
       <FloatingNav />
 

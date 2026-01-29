@@ -31,7 +31,7 @@ const values = [
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-neutral-950">
+    <main className="min-h-screen bg-neutral-950 overflow-x-hidden">
       <TopNav />
       <FloatingNav />
 
@@ -40,7 +40,7 @@ export default function AboutPage() {
         {/* Greenish gradient background */}
         <div className="absolute inset-0 bg-gradient-to-b from-matrixo-purple/10 via-transparent to-transparent" />
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-matrixo-purple/20 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-matrixo-green/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-matrixo-purple/10 rounded-full blur-[120px]" />
         {/* Tiny smoke particles */}
         <div className="absolute inset-0 z-[1]">
           <ParticleBackground />
@@ -108,7 +108,7 @@ export default function AboutPage() {
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-matrixo-purple/20 to-matrixo-green/20 p-1">
+              <div className="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-matrixo-purple/20 to-matrixo-purple/10 p-1">
                 <div className="w-full h-full rounded-xl bg-neutral-900 flex items-center justify-center">
                   <img
                     src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=800&fit=crop"
@@ -117,7 +117,7 @@ export default function AboutPage() {
                   />
                 </div>
               </div>
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-matrixo-green/20 rounded-full blur-2xl" />
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-matrixo-purple/20 rounded-full blur-2xl" />
             </motion.div>
           </div>
         </div>

@@ -31,7 +31,7 @@ const testimonials = [
 
 export default function TestimonialsPage() {
   return (
-    <main className="min-h-screen bg-neutral-950">
+    <main className="min-h-screen bg-neutral-950 overflow-x-hidden">
       <TopNav />
       <FloatingNav />
 
