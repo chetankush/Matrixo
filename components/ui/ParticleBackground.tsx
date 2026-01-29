@@ -40,7 +40,7 @@ export const ParticleBackground = () => {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        size: Math.random() * 2 + 0.5, // Very tiny: 0.5 to 2.5px
+        size: Math.random() * 0.8 + 0.2, // Smaller: 0.2 to 1px
         speedX: (Math.random() - 0.5) * 0.8,
         speedY: -Math.random() * 0.6 - 0.2, // Faster upward drift
         opacity: Math.random() * 0.4 + 0.1,

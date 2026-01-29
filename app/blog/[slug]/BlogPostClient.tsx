@@ -54,10 +54,10 @@ export default function BlogPostClient({ post, recentPosts }: Props) {
 
       {/* Hero Section */}
       <section className="relative pt-24 pb-6 sm:pt-28 sm:pb-8 overflow-hidden">
-        {/* Greenish/purple gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-matrixo-purple/10 via-transparent to-transparent" />
-        <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-matrixo-purple/20 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-matrixo-green/10 rounded-full blur-[120px]" />
+        {/* Blue gradient background only */}
+        <div className="absolute inset-0 bg-gradient-to-b from-sky-500/10 via-transparent to-transparent" />
+        <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-sky-500/15 rounded-full blur-[120px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-sky-500/10 rounded-full blur-[120px]" />
         {/* Tiny smoke particles */}
         <div className="absolute inset-0 z-[1]">
           <ParticleBackground />
