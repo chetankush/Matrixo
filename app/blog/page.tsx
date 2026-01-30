@@ -8,6 +8,7 @@ import { blogPosts, getAllCategories } from "@/lib/blog-data";
 import { Calendar, Clock, BookOpen, Search } from "lucide-react";
 import Link from "next/link";
 import { Footer } from "@/components/ui/Footer";
+import { ContactButtons } from "@/components/ui/ContactButtons";
 
 export default function BlogPage() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -182,6 +183,7 @@ export default function BlogPage() {
       </section>
 
       <Footer />
+      <ContactButtons />
     </main>
   );
 }

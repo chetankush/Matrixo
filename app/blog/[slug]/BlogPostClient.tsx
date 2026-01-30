@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { Footer } from "@/components/ui/Footer";
+import { ContactButtons } from "@/components/ui/ContactButtons";
 
 interface Props {
   post: BlogPost;
@@ -403,6 +404,7 @@ export default function BlogPostClient({ post, recentPosts }: Props) {
       </section>
 
       <Footer />
+      <ContactButtons />
     </main>
   );
 }

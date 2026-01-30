@@ -29,7 +29,7 @@ export const Hero = () => {
       {/* Content Layer - fixed at bottom */}
       <motion.div
         style={{ opacity }}
-        className="absolute bottom-[100px] sm:bottom-[60px] md:bottom-[20px] left-0 right-0 z-10 w-full max-w-[1920px] mx-auto px-4 sm:px-6 md:px-12 lg:px-24 pointer-events-auto"
+        className="absolute bottom-[100px] sm:bottom-[60px] md:bottom-[20px] left-0 right-0 z-10 w-full max-w-[1920px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 pointer-events-auto"
       >
         {/* Main Typography Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-end">
@@ -54,12 +54,11 @@ export const Hero = () => {
           </div>
 
           {/* Right Column: Description & CTA */}
-          <div className="lg:col-span-5 flex flex-col justify-end items-start lg:items-end pb-1 lg:pb-2">
+          <div className="lg:col-span-5 flex flex-col justify-end items-start lg:items-end pb-1 lg:pb-2 lg:pr-12 xl:pr-12">
             <p className="font-sans text-sm sm:text-base text-neutral-300 max-w-sm text-left lg:text-right leading-relaxed mb-4">
               Web design. Development. AI integration.
               <br className="hidden sm:block" />
-              We build websites and apps that convert visitors into customers
-              and scale your business.
+              We build Websites & Apps that convert visitors into customers.
             </p>
 
             <button

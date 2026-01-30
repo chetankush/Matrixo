@@ -7,6 +7,7 @@ import { ParticleBackground } from "@/components/ui/ParticleBackground";
 import { ExternalLink, Github, Layers, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Footer } from "@/components/ui/Footer";
+import { ContactButtons } from "@/components/ui/ContactButtons";
 
 const categories = [
   "All",
@@ -273,6 +274,7 @@ export default function ProjectsPage() {
       </section>
 
       <Footer />
+      <ContactButtons />
     </main>
   );
 }

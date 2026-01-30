@@ -5,6 +5,7 @@ import { FloatingNav } from "@/components/ui/FloatingNav";
 import { ParticleBackground } from "@/components/ui/ParticleBackground";
 import Link from "next/link";
 import { Footer } from "@/components/ui/Footer";
+import { ContactButtons } from "@/components/ui/ContactButtons";
 
 const testimonials = [
   {
@@ -125,6 +126,7 @@ export default function TestimonialsPage() {
       </section>
 
       <Footer />
+      <ContactButtons />
     </main>
   );
 }

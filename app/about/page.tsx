@@ -6,6 +6,7 @@ import { ParticleBackground } from "@/components/ui/ParticleBackground";
 import { Users, Target, Rocket, Code, Sparkles, Award } from "lucide-react";
 import Link from "next/link";
 import { Footer } from "@/components/ui/Footer";
+import { ContactButtons } from "@/components/ui/ContactButtons";
 
 const values = [
   {
@@ -212,6 +213,7 @@ export default function AboutPage() {
       </section>
 
       <Footer />
+      <ContactButtons />
     </main>
   );
 }
