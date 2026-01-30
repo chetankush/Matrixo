@@ -55,7 +55,7 @@ export const ContactButtons = () => {
         onClick={() => setIsOpen(!isOpen)}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="relative w-14 h-14 flex items-center justify-center group md:w-20 md:h-20"
+        className="relative w-12 h-12 flex items-center justify-center group md:w-16 md:h-16"
       >
         {/* Rotating Text Ring */}
         <motion.div
@@ -72,12 +72,12 @@ export const ContactButtons = () => {
                 d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
               />
             </defs>
-            <text className="text-[9px] font-bold uppercase tracking-widest fill-white md:text-[11px]">
+            <text className="text-[8px] font-bold uppercase tracking-widest fill-white md:text-[9px]">
               <textPath href="#textPath" startOffset="0%">
                 Call Us •
               </textPath>
             </text>
-            <text className="text-[9px] font-bold uppercase tracking-widest fill-white md:text-[11px]">
+            <text className="text-[8px] font-bold uppercase tracking-widest fill-white md:text-[9px]">
               <textPath href="#textPath" startOffset="50%">
                 WhatsApp •
               </textPath>
@@ -87,14 +87,14 @@ export const ContactButtons = () => {
 
         {/* Center Icon */}
         <div
-          className={`relative z-10 w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-300 md:w-12 md:h-12 ${
+          className={`relative z-10 w-6 h-6 rounded-full flex items-center justify-center transition-colors duration-300 md:w-9 md:h-9 ${
             isOpen ? "bg-neutral-800" : "bg-matrixo-green group-hover:bg-green-400"
           }`}
         >
           {isOpen ? (
-            <X className="w-4 h-4 text-white md:w-5 md:h-5" />
+            <X className="w-3 h-3 text-white md:w-4 md:h-4" />
           ) : (
-            <Phone className="w-4 h-4 text-black md:w-5 md:h-5" />
+            <Phone className="w-3 h-3 text-black md:w-4 md:h-4" />
           )}
         </div>
       </motion.button>

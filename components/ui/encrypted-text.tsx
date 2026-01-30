@@ -13,14 +13,6 @@ interface EncryptedTextProps {
 
 const CHARS = "!@#$%^&*()_+-=[]{}|;:,.<>?/~`0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
-// Generate initial scrambled text
-const getScrambledText = (text: string) => {
-  return text
-    .split("")
-    .map(() => CHARS[Math.floor(Math.random() * CHARS.length)])
-    .join("");
-};
-
 export const EncryptedText = ({
   text,
   interval = 50,
@@ -29,11 +21,19 @@ export const EncryptedText = ({
   encryptedClassName,
   revealedClassName,
 }: EncryptedTextProps) => {
-  // Initialize with scrambled text instead of empty string
-  const [outputText, setOutputText] = useState(() => getScrambledText(text));
-  const [isHovered, setIsHovered] = useState(false);
+  // Initialize with actual text to avoid hydration mismatch
+  const [outputText, setOutputText] = useState(text);
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Set mounted state after hydration
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
+    // Only run animation after component is mounted (client-side)
+    if (!isMounted) return;
+
     let timer: NodeJS.Timeout;
     let iteration = 0;
 
@@ -57,10 +57,15 @@ export const EncryptedText = ({
       iteration += 1 / 3; // Slower reveal for smoother effect
     };
 
+    // Start with scrambled text immediately
+    setOutputText(
+      text.split("").map(() => CHARS[Math.floor(Math.random() * CHARS.length)]).join("")
+    );
+
     timer = setInterval(animate, interval);
 
     return () => clearInterval(timer);
-  }, [text, interval]);
+  }, [text, interval, isMounted]);
 
   // Split the text into revealed and encrypted parts for styling
   const renderText = () => {

@@ -193,7 +193,7 @@ export const MusicToggle = () => {
     <button
       onClick={toggleMute}
       className={cn(
-        "fixed bottom-6 left-4 z-50 p-2 rounded-full transition-all duration-300 md:left-6",
+        "fixed bottom-6 left-1 z-50 p-2 rounded-full transition-all duration-300 md:left-2",
         "bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20",
         "text-white hover:scale-105"
       )}
