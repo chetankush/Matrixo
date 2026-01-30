@@ -2,15 +2,25 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone, MessageCircle, X } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-export const ContactButtons = () => {
+interface ContactButtonsProps {
+  showOnMobile?: boolean;
+}
+
+export const ContactButtons = ({ showOnMobile = false }: ContactButtonsProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const phoneNumber = "9303135537";
   const whatsappNumber = "917987401227";
 
   return (
-    <div className="fixed bottom-20 right-4 z-50 flex flex-col items-end gap-2 md:bottom-12 md:right-6">
+    <div className={cn(
+      "fixed z-50 flex flex-col items-end gap-2",
+      showOnMobile
+        ? "bottom-2 right-2 md:bottom-12 md:right-6"
+        : "bottom-12 right-6 hidden md:flex"
+    )}>
       <AnimatePresence>
         {isOpen && (
           <>

@@ -43,7 +43,7 @@ export default function Home() {
           <Footer />
         </div>
         <div className="pointer-events-auto">
-          <ContactButtons />
+          <ContactButtons showOnMobile />
         </div>
         <div className="pointer-events-auto">
           <MusicToggle />
