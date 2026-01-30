@@ -63,7 +63,7 @@ export const Hero = () => {
 
             <button
               onClick={scrollToServices}
-              className="group flex items-center gap-3 text-white hover:text-matrixo-green transition-colors duration-300"
+              className="group flex items-center gap-3 text-white hover:text-matrixo-green transition-colors duration-300 mb-6 sm:mb-0"
             >
               <span className="font-heading font-bold text-base sm:text-lg tracking-tight">
                 SEE OUR WORK

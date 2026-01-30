@@ -297,33 +297,10 @@ export const ThreeBackground = () => {
         <Preload all />
         <GPUCompiler />
       </Canvas>
-
-      {/* Zoom indicator */}
-      <ZoomIndicator />
     </div>,
     document.body
   );
 };
-
-// Zoom indicator component
-function ZoomIndicator() {
-  const [zoom, setZoom] = useState(100);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setZoom(Math.round(zoomScale * 100));
-    }, 100);
-    return () => clearInterval(interval);
-  }, []);
-
-  if (zoom === 100) return null;
-
-  return (
-    <div className="absolute bottom-4 right-4 px-3 py-1.5 bg-black/60 backdrop-blur-sm rounded-full text-white text-xs font-medium">
-      {zoom}%
-    </div>
-  );
-}
 
 // Interactive camera with zoom
 function InteractiveCamera() {

@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone, MessageCircle, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -18,8 +19,8 @@ export const ContactButtons = ({ showOnMobile = false }: ContactButtonsProps) =>
     <div className={cn(
       "fixed z-50 flex flex-col items-end gap-2",
       showOnMobile
-        ? "bottom-2 right-2 md:bottom-12 md:right-6"
-        : "bottom-12 right-6 hidden md:flex"
+        ? "bottom-2 right-2 md:bottom-8 md:right-6"
+        : "bottom-8 right-6 hidden md:flex"
     )}>
       <AnimatePresence>
         {isOpen && (
@@ -51,8 +52,13 @@ export const ContactButtons = ({ showOnMobile = false }: ContactButtonsProps) =>
               className="flex items-center gap-2 px-3 py-2 bg-neutral-900 border border-white/10 rounded-full shadow-lg hover:bg-neutral-800 transition-colors group md:gap-3 md:px-4 md:py-3"
             >
               <span className="text-white text-sm font-medium hidden sm:block">WhatsApp</span>
-              <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center group-hover:bg-green-400 transition-colors md:w-10 md:h-10">
-                <MessageCircle className="w-4 h-4 text-white md:w-5 md:h-5" />
+              <div className="relative w-8 h-8 rounded-full overflow-hidden md:w-10 md:h-10">
+                <Image 
+                  src="/social.png" 
+                  alt="WhatsApp" 
+                  fill
+                  className="object-cover"
+                />
               </div>
             </motion.a>
           </>

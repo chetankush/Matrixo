@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, useRef, useCallback } from "react";
-import { Volume2, VolumeX } from "lucide-react";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 export const MusicToggle = () => {
@@ -16,7 +16,7 @@ export const MusicToggle = () => {
   useEffect(() => {
     const audio = new Audio("/space-sound.mp3");
     audio.loop = true;
-    audio.volume = 0.01;
+    audio.volume = 0.05;
     audio.preload = "auto";
     audioRef.current = audio;
 
@@ -193,17 +193,33 @@ export const MusicToggle = () => {
     <button
       onClick={toggleMute}
       className={cn(
-        "fixed bottom-2 left-2 z-50 p-2 rounded-full transition-all duration-300 md:bottom-6 md:left-6",
-        "bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20",
-        "text-white hover:scale-105"
+        "fixed bottom-6 left-6 z-50 flex items-end justify-center gap-[2px] p-2 transition-all duration-300",
+        "h-9 w-9" // Reduced size
       )}
       aria-label={isMuted ? "Unmute" : "Mute"}
     >
-      {isMuted ? (
-        <VolumeX className="w-4 h-4" />
-      ) : (
-        <Volume2 className="w-4 h-4" />
-      )}
+      {/* Equalizer Bars */}
+      {[
+        [2, 10, 6, 12, 4, 2],     // Bar 1 values
+        [2, 14, 8, 16, 9, 2],     // Bar 2 values (tallest)
+        [2, 12, 6, 14, 7, 2],    // Bar 3 values
+        [2, 8, 4, 10, 6, 2]      // Bar 4 values
+      ].map((values, index) => (
+        <motion.div
+          key={index}
+          className="w-[3px] bg-white" // Thinner and square (removed rounded-full)
+          animate={{
+            height: isMuted ? 2 : values,
+          }}
+          transition={{
+            duration: 0.6,
+            repeat: Infinity,
+            repeatType: "reverse",
+            ease: "easeInOut",
+            delay: index * 0.1, // Stagger for randomness
+          }}
+        />
+      ))}
     </button>
   );
 };
