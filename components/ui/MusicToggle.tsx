@@ -27,8 +27,8 @@ export const MusicToggle = () => {
         // Autoplay succeeded - music is playing
         setHasInteracted(true);
       } catch {
-        // Autoplay blocked by browser - wait for user interaction
-        // But keep isMuted as false so music plays after interaction
+        // Autoplay blocked - sync state to muted
+        setIsMuted(true);
       }
     };
 
@@ -53,8 +53,9 @@ export const MusicToggle = () => {
       if (audioRef.current && !userMutedRef.current) {
         try {
           await audioRef.current.play();
+          setIsMuted(false);
         } catch {
-          // Still blocked - rare
+          // Still blocked
         }
       }
     };
@@ -193,7 +194,7 @@ export const MusicToggle = () => {
     <button
       onClick={toggleMute}
       className={cn(
-        "fixed bottom-6 left-6 z-50 flex items-end justify-center gap-[2px] p-2 transition-all duration-300",
+        "fixed bottom-2 left-6 z-50 flex items-end justify-center gap-[2px] p-2 transition-all duration-300",
         "h-9 w-9" // Reduced size
       )}
       aria-label={isMuted ? "Unmute" : "Mute"}
