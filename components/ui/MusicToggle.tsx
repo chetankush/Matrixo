@@ -27,8 +27,8 @@ export const MusicToggle = () => {
         // Autoplay succeeded - music is playing
         setHasInteracted(true);
       } catch {
-        // Autoplay blocked - sync state to muted
-        setIsMuted(true);
+        // Autoplay blocked by browser - wait for user interaction
+        // But keep isMuted as false so music plays after interaction
       }
     };
 
@@ -62,12 +62,18 @@ export const MusicToggle = () => {
 
     document.addEventListener("click", startAudioOnInteraction, { once: true });
     document.addEventListener("touchstart", startAudioOnInteraction, { once: true });
+    document.addEventListener("scroll", startAudioOnInteraction, { once: true });
     document.addEventListener("keydown", startAudioOnInteraction, { once: true });
+    document.addEventListener("mousemove", startAudioOnInteraction, { once: true }); // Aggressive trigger
+    document.addEventListener("pointermove", startAudioOnInteraction, { once: true });
 
     return () => {
       document.removeEventListener("click", startAudioOnInteraction);
       document.removeEventListener("touchstart", startAudioOnInteraction);
+      document.removeEventListener("scroll", startAudioOnInteraction);
       document.removeEventListener("keydown", startAudioOnInteraction);
+      document.removeEventListener("mousemove", startAudioOnInteraction);
+      document.removeEventListener("pointermove", startAudioOnInteraction);
     };
   }, [hasInteracted]);
 
@@ -149,7 +155,7 @@ export const MusicToggle = () => {
   useEffect(() => {
     if (!audioRef.current || !hasInteracted) return;
 
-    audioRef.current.volume = 0.01;
+    audioRef.current.volume = 0.05;
 
     const shouldPlay = isOnHero && !isMuted && isTabVisible;
 
